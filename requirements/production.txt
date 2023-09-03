@@ -1,0 +1,6 @@
+Django==4.*
+gunicorn==20.*
+whitenoise==5.*
+django-compressor==4.*
+django-libsass==0.*
+python-decouple==3.*
