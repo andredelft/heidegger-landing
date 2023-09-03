@@ -1,0 +1,119 @@
+@mixin card-hover {
+  @at-root .card:hover & {
+    @content;
+  }
+}
+
+@mixin theme-shades($theme-color) {
+  --card-theme-50: #{lighten($theme-color, 4.3 * $gradient-step-size)};
+  --card-theme-100: #{lighten($theme-color, 4 * $gradient-step-size)};
+  --card-theme-200: #{lighten($theme-color, 3 * $gradient-step-size)};
+  --card-theme-300: #{lighten($theme-color, 2 * $gradient-step-size)};
+  --card-theme-400: #{lighten($theme-color, $gradient-step-size)};
+  --card-theme-500: #{$theme-color};
+  --card-theme-600: #{darken($theme-color, $gradient-step-size)};
+  --card-theme-700: #{darken($theme-color, 2 * $gradient-step-size)};
+  --card-theme-800: #{darken($theme-color, 3 * $gradient-step-size)};
+  --card-theme-900: #{darken($theme-color, 4 * $gradient-step-size)};
+}
+
+.card {
+  &__container {
+    width: 100%;
+    display: grid;
+    gap: 1rem 1.5rem;
+
+    @include breakpoint(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  color: inherit;
+  display: block;
+  text-decoration: none;
+  padding: 0.7rem 1rem;
+  border-radius: 18px;
+  border: 2px solid $slate-200;
+  @include dark {
+    border-color: $slate-600;
+  }
+  transition: border-color 500ms ease, background-color 300ms ease;
+  align-self: start;
+
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+
+  &--red {
+    @include theme-shades(#f72b07);
+  }
+  &--yellow {
+    @include theme-shades(#f59e0b);
+  }
+
+  &:hover {
+    background-color: var(--card-theme-100);
+    border-color: var(--card-theme-600);
+
+    @include dark {
+      background-color: var(--card-theme-900);
+      border-color: var(--card-theme-700);
+    }
+  }
+
+  &__icon {
+    aspect-ratio: 1;
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+
+    transition: $transition-colors;
+    background-color: $slate-200;
+    @include dark {
+      background-color: $slate-700;
+    }
+
+    @include card-hover {
+      color: var(--card-theme-800);
+      background-color: var(--card-theme-200);
+
+      @include dark {
+        color: var(--card-theme-200);
+        background-color: var(--card-theme-700);
+      }
+    }
+  }
+
+  &__heading {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: $transition-colors;
+
+    @include card-hover {
+      color: var(--card-theme-900);
+
+      @include dark {
+        color: var(--card-theme-50);
+      }
+    }
+  }
+
+  &__tagline {
+    font-style: italic;
+    font-size: 0.9em;
+    line-height: 1.1;
+    margin: 0;
+    transition: $transition-colors;
+
+    @include card-hover {
+      color: var(--card-theme-800);
+
+      @include dark {
+        color: var(--card-theme-200);
+      }
+    }
+  }
+}

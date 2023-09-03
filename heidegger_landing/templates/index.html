@@ -5,13 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% compress css %}
-  <link rel="stylesheet" type="text/x-scss" href="{% static '_index.scss' %}">
+  <link rel="stylesheet" type="text/x-scss" href="{% static 'heidegger_landing/_index.scss' %}">
   {% endcompress %}
   <title>Heidegger delven</title>
 </head>
 <body>
-  <div class="container">
-    <h1><code>heidegger.delve.nu</code></h1>
+  <div class="container home">
+    <div class="home__text-container">
+      <h1>Heidegger delven</h1>
+      <p>
+        Een vergaarplaats van <a target="_blank" href="https://andrevandelft.nl">André van Delft</a> en <a target="_blank" href="https://johannesdewit.nl">Johannes de Wit</a> voor onze vondsten uit Heideggers werk.
+      </p>
+    </div>
+    <div class="card__container">
+      {% include 'components/_card.html' with href="/index" icon="bookmarks-simple" heading="Index" variant="red" tagline="Onze digitale kaartenbak" %}
+      {% include 'components/_card.html' with href="/vertalingen" icon="book-open-text" heading="Vertalingen" variant="yellow" tagline="Vertalingen van onze hand" %}
+    </div>
   </div>
 </body>
 </html>

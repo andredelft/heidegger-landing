@@ -1,0 +1,9 @@
+<{% if href %}a href="{{ href }}"{% else %}div{% endif %} class="card{% if variant %} card--{{variant}}{% endif %}">
+  <i class="card__icon icon-{{ icon }}"></i>
+  <div class="card__content">
+    <h2 class="card__heading">
+      {{ heading }}
+    </h2>
+    {% if tagline %}<p class="card__tagline">{{ tagline }}</p>{% endif %}
+  </div>
+</{% if href %}a{% else %}div{% endif %}>
